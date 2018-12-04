@@ -23,6 +23,7 @@ dependencies:
   camera: ^0.2.6
   path_provider: ^0.4.1
   video_player: ^0.7.2
+  sensors: ^0.3.5
 
 dev_dependencies:
   flutter_test:
