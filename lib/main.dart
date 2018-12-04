@@ -1,14 +1,29 @@
 import 'package:flutter/material.dart';
 import 'camera.dart';
 import 'accelerometer.dart';
+import 'package:camera/camera.dart';
+import 'dart:async';
 
-void main() => runApp(new MyApp());
+void main() {
+  initializeCamera();
+  runApp(new MyApp());
+}
 
+Future<void> initializeCamera() async {
+  // Fetch the available cameras before initializing the app.
+  try {
+    cameras = await availableCameras();
+  } on CameraException catch (e) {
+    logError(e.code, e.description);
+  }
+}
 
 class MyApp extends StatelessWidget {
+
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
+
     return new MaterialApp(
       title: 'Flutter Demo',
       theme: new ThemeData(
