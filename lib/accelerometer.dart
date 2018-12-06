@@ -1,7 +1,7 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:sensors/sensors.dart';
-
+import 'dart:math';
 
 
 
@@ -26,22 +26,15 @@ class MyHomePage extends StatefulWidget {
 class _MyHomePageState extends State<MyHomePage> {
 
 
-  List<int> _accelerometerValues;
-  List<double> _userAccelerometerValues;
-  List<double> _gyroscopeValues;
-  List<StreamSubscription<dynamic>> _streamSubscriptions =
-  <StreamSubscription<dynamic>>[];
 
+
+  double x=1.0,y=1.0,z=1.0;
 
   @override
   Widget build(BuildContext context) {
-    final List<String> accelerometer =
-    _accelerometerValues?.map((int v) => v.toStringAsFixed(1))?.toList();
-    final List<String> gyroscope =
-    _gyroscopeValues?.map((double v) => v.toStringAsFixed(1))?.toList();
-    final List<String> userAccelerometer = _userAccelerometerValues
-        ?.map((double v) => v.toStringAsFixed(1))
-        ?.toList();
+
+
+
 
 
     return new Card(
@@ -59,9 +52,70 @@ class _MyHomePageState extends State<MyHomePage> {
               child: new Column(
                 children: <Widget>[
                   new Padding(
-                    padding: new EdgeInsets.all(7.0),
-                    child: new Text('Accelerometer: $accelerometer',
-                        style: new TextStyle(fontSize: 18.0)),
+                      padding: new EdgeInsets.all(7.0),
+                      child: new Column(
+                        children: <Widget>[
+                          new Padding(
+                            padding: new EdgeInsets.all(7.0),
+                            child:
+                            //new Text('Accelerometer: $gyroscope',
+                            new Text(
+                                'x=' + (x).toInt().toStringAsFixed(1),
+                                style: new TextStyle(fontSize: 18.0)),
+                          ),
+                          new ConstrainedBox(
+                            constraints: new BoxConstraints(
+                              minHeight: 5.0,
+                              minWidth: (pow(x,2)).abs()>MediaQuery.of(context).size.width? MediaQuery.of(context).size.width:(pow(x,2)),
+                              maxHeight: 30.0,
+                              maxWidth: MediaQuery.of(context).size.width,
+                            ),
+                            child: new DecoratedBox(
+                              decoration: new BoxDecoration(color: Colors.red),
+                            ),
+                          ),
+                          new Padding(
+                            padding: new EdgeInsets.all(7.0),
+                            child:
+                            //new Text('Accelerometer: $gyroscope',
+                            new Text(
+                                " y=" + (y).toInt().toStringAsFixed(1),
+                                style: new TextStyle(fontSize: 18.0)),
+                          ),
+                          new ConstrainedBox(
+                            constraints: new BoxConstraints(
+                              minHeight: 5.0,
+                              minWidth: (pow(y,2)).abs()>MediaQuery.of(context).size.width? MediaQuery.of(context).size.width:(pow(y,2)),
+                              maxHeight: 30.0,
+                              maxWidth: MediaQuery.of(context).size.width,
+                            ),
+                            child: new DecoratedBox(
+                              decoration: new BoxDecoration(color: Colors.blue),
+                            ),
+                          ),
+
+                          new Padding(
+                            padding: new EdgeInsets.all(7.0),
+                            child:
+                            //new Text('Accelerometer: $gyroscope',
+                            new Text(
+                                "z= "+(z).toInt().toStringAsFixed(1),
+                                style: new TextStyle(fontSize: 18.0)),
+                          ),
+                          new ConstrainedBox(
+                            constraints: new BoxConstraints(
+                              minHeight: 5.0,
+                              minWidth: (pow(z,2)).abs()>MediaQuery.of(context).size.width? MediaQuery.of(context).size.width:(pow(z,2)),
+                              maxHeight: 30.0,
+                              maxWidth: MediaQuery.of(context).size.width,
+                            ),
+                            child: new DecoratedBox(
+                              decoration: new BoxDecoration(color: Colors.green),
+                            ),
+                          ),
+
+                        ],
+                      )
                   )
 
                 ],
@@ -72,32 +126,18 @@ class _MyHomePageState extends State<MyHomePage> {
     );
   }
 
-  void dispose() {
-    super.dispose();
-    for (StreamSubscription<dynamic> subscription in _streamSubscriptions) {
-      subscription.cancel();
-    }
-  }
+
 
   @override
   void initState() {
     super.initState();
-    _streamSubscriptions
-        .add(accelerometerEvents.listen((AccelerometerEvent event) {
+    accelerometerEvents.listen((AccelerometerEvent event) {
       setState(() {
-        _accelerometerValues = <int>[event.x.toInt(), event.y.toInt(), event.z.toInt()];
+        x = event.x;
+        y = event.y;
+        z = event.z;
       });
-    }));
-    _streamSubscriptions.add(gyroscopeEvents.listen((GyroscopeEvent event) {
-      setState(() {
-        _gyroscopeValues = <double>[event.x, event.y, event.z];
-      });
-    }));
-    _streamSubscriptions
-        .add(userAccelerometerEvents.listen((UserAccelerometerEvent event) {
-      setState(() {
-        _userAccelerometerValues = <double>[event.x, event.y, event.z];
-      });
-    }));
+    });
+
   }
 }

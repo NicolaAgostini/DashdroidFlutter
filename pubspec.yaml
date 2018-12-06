@@ -25,6 +25,7 @@ dependencies:
   video_player: ^0.7.2
   sensors: ^0.3.5
 
+
 dev_dependencies:
   flutter_test:
     sdk: flutter

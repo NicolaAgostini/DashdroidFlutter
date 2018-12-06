@@ -3,6 +3,7 @@ import 'camera.dart';
 import 'accelerometer.dart';
 import 'package:camera/camera.dart';
 import 'dart:async';
+import 'gyroscope.dart';
 
 void main() {
   initializeCamera();
@@ -97,24 +98,6 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  int _counter = 0;
-  //List cards = new List();
-
-
-
-
-
-  void _incrementCounter() {
-    setState(() {
-      // This call to setState tells the Flutter framework that something has
-      // changed in this State, which causes it to rerun the build method below
-      // so that the display can reflect the updated values. If we changed
-      // _counter without calling setState(), then the build method would not be
-      // called again, and so nothing would appear to happen.
-      _counter++;
-    });
-  }
-
   @override
   Widget build(BuildContext context) {
     // This method is rerun every time setState is called, for instance as done
@@ -132,7 +115,8 @@ class _MyHomePageState extends State<MyHomePage> {
       ),
       body: new Container(
        child: new ListView(
-       children: <Widget> [new AccelerometerValue()
+       children: <Widget> [new AccelerometerValue(),
+         new GyroscopeValue()
        ],
       )
 
