@@ -24,6 +24,8 @@ dependencies:
   path_provider: ^0.4.1
   video_player: ^0.7.2
   sensors: ^0.3.5
+  flutter_iap: ^1.2.3
+  geolocator: ^2.1.1
 
 
 dev_dependencies:

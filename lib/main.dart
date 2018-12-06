@@ -4,6 +4,7 @@ import 'accelerometer.dart';
 import 'package:camera/camera.dart';
 import 'dart:async';
 import 'gyroscope.dart';
+import 'position.dart';
 
 void main() {
   initializeCamera();
@@ -116,7 +117,8 @@ class _MyHomePageState extends State<MyHomePage> {
       body: new Container(
        child: new ListView(
        children: <Widget> [new AccelerometerValue(),
-         new GyroscopeValue()
+         new GyroscopeValue(),
+         new PositionValue()
        ],
       )
 
