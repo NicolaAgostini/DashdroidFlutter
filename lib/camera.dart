@@ -3,6 +3,7 @@ import 'dart:async';
 import 'package:camera/camera.dart';
 import 'package:path_provider/path_provider.dart';
 import 'dart:io';
+import 'package:flutter/services.dart';
 
 
 
@@ -27,14 +28,14 @@ class CameraExampleHome extends StatefulWidget {
 }
 
 /// Returns a suitable camera icon for [direction].
-IconData getCameraLensIcon(CameraLensDirection direction) {
+Text getCameraLensIcon(CameraLensDirection direction) {
   switch (direction) {
     case CameraLensDirection.back:
-      return Icons.camera_rear;
+      return new Text("Rear");
     case CameraLensDirection.front:
-      return Icons.camera_front;
+      return new Text("Front");
     case CameraLensDirection.external:
-      return Icons.camera;
+      return new Text("Camera");
   }
   throw ArgumentError('Unknown lens direction');
 }
@@ -50,6 +51,14 @@ class _CameraExampleHomeState extends State<CameraExampleHome> {
 
   @override
   Widget build(BuildContext context) {
+
+    SystemChrome.setPreferredOrientations([
+      DeviceOrientation.portraitUp,
+      DeviceOrientation.portraitDown,
+      //DeviceOrientation.landscapeLeft,
+      //DeviceOrientation.landscapeRight,
+    ]);
+
     return Scaffold(
       key: _scaffoldKey,
       appBar: AppBar(
@@ -58,6 +67,21 @@ class _CameraExampleHomeState extends State<CameraExampleHome> {
       ),
       body: Column(
         children: <Widget>[
+          new Row(
+            children: <Widget>[Padding(
+              padding: const EdgeInsets.all(5.0),
+              child: Row(
+                mainAxisSize: MainAxisSize.max,
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: <Widget>[
+                  _cameraTogglesRowWidget(),
+
+                ],
+              ),
+            ),
+            ],
+          ),
+
           Expanded(
             child: Container(
               child: Padding(
@@ -76,16 +100,7 @@ class _CameraExampleHomeState extends State<CameraExampleHome> {
             ),
           ),
           _captureControlRowWidget(),
-          Padding(
-            padding: const EdgeInsets.all(5.0),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.start,
-              children: <Widget>[
-                _cameraTogglesRowWidget(),
 
-              ],
-            ),
-          ),
         ],
       ),
     );
@@ -118,13 +133,15 @@ class _CameraExampleHomeState extends State<CameraExampleHome> {
     return Row(
       mainAxisAlignment: MainAxisAlignment.center,
       mainAxisSize: MainAxisSize.max,
+
       children: <Widget>[
     FloatingActionButton(
+
       onPressed: controller != null &&
           controller.value.isInitialized
           ? onTakePictureButtonPressed
           : null,
-      tooltip: 'Increment',
+      tooltip: 'Press',
       child: new Icon(Icons.add_a_photo),
       backgroundColor: Colors.green[300],
     ),
@@ -143,9 +160,9 @@ class _CameraExampleHomeState extends State<CameraExampleHome> {
       for (CameraDescription cameraDescription in cameras) {
         toggles.add(
           SizedBox(
-            width: 90.0,
+            width: MediaQuery.of(context).size.width-200,
             child: RadioListTile<CameraDescription>(
-              title: Icon(getCameraLensIcon(cameraDescription.lensDirection)),
+              title: getCameraLensIcon(cameraDescription.lensDirection),
               groupValue: controller?.description,
               value: cameraDescription,
               onChanged: controller != null && controller.value.isRecordingVideo

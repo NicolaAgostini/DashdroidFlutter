@@ -33,6 +33,8 @@ class MyApp extends StatelessWidget {
       DeviceOrientation.portraitDown,
     ]);
 
+    bool isIOS = Theme.of(context).platform == TargetPlatform.iOS;
+
     return new MaterialApp(
       title: 'Flutter Demo',
       theme: new ThemeData(
