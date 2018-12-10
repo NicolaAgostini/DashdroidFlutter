@@ -5,8 +5,11 @@ import 'package:camera/camera.dart';
 import 'dart:async';
 import 'gyroscope.dart';
 import 'position.dart';
+import 'package:flutter/services.dart';
+
 
 void main() {
+
   initializeCamera();
   runApp(new MyApp());
 }
@@ -25,6 +28,10 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
+    SystemChrome.setPreferredOrientations([
+      DeviceOrientation.portraitUp,
+      DeviceOrientation.portraitDown,
+    ]);
 
     return new MaterialApp(
       title: 'Flutter Demo',
@@ -51,9 +58,7 @@ class MyApp extends StatelessWidget {
               Tab(
                 icon: new Icon(Icons.camera),
               ),
-              Tab(
-                icon: new Icon(Icons.perm_identity),
-              ),
+
 
             ],
             labelColor: Colors.green[700],
