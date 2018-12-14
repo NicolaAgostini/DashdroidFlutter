@@ -26,7 +26,7 @@ dependencies:
   sensors: ^0.3.5
   flutter_iap: ^1.2.3
   geolocator: ^2.1.1
-  flutter_compass: ^0.0.2
+
 
 
 dev_dependencies:
