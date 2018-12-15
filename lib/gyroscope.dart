@@ -27,9 +27,8 @@ class _MyHomePageState extends State<MyHomePage> {
 
 
 
-  int counter=0;
-  double x=1.0, y=1.0, z=1.0;
-  double x1=1.0, y1=1.0, z1=1.0;
+
+  double x=0.0, y=0.0, z=0.0;
 
 
   @override

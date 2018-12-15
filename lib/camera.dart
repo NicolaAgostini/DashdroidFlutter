@@ -110,7 +110,7 @@ class _CameraExampleHomeState extends State<CameraExampleHome> {
   Widget _cameraPreviewWidget() {
     if (controller == null || !controller.value.isInitialized) {
       return const Text(
-        'Tap a camera',
+        'Tap a camera Front / Rear',
         style: TextStyle(
           color: Colors.white,
           fontSize: 24.0,
