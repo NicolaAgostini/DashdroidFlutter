@@ -1,8 +1,4 @@
 # esempio
 
 A new Flutter project.
-
-## Getting Started
-
-For help getting started with Flutter, view our online
-[documentation](https://flutter.io/).
+With an example of drawer navigation for Android and bottom tab navigation for IOS
