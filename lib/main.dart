@@ -68,7 +68,7 @@ class MyApp extends StatelessWidget {
 
           body: TabBarView(
             children: [
-              new MyHomePage(title: 'Home'),
+              new MyHomePage(title: 'aaaa'),
               new CameraApp()
             ],
           ),
@@ -117,12 +117,13 @@ class _MyHomePageState extends State<MyHomePage> {
     // fast, so that you can just rebuild anything that needs updating rather
     // than having to individually change instances of widgets.
     return new Scaffold(
-      appBar: new AppBar(
+      /*appBar: new AppBar(
         // Here we take the value from the MyHomePage object that was created by
         // the App.build method, and use it to set our appbar title.
         title: new Text(widget.title),
         backgroundColor: Colors.green[600],
       ),
+      */
       body: new Container(
        child: new ListView(
        children: <Widget> [new AccelerometerValue(),

@@ -61,10 +61,11 @@ class _CameraExampleHomeState extends State<CameraExampleHome> {
 
     return Scaffold(
       key: _scaffoldKey,
-      appBar: AppBar(
+      /*appBar: AppBar(
         title: const Text('Camera example'),
         backgroundColor: Colors.green[600],
       ),
+      */
       body: Column(
         children: <Widget>[
           new Row(
