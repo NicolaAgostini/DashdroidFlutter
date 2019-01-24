@@ -54,7 +54,6 @@ class _MyHomePageState extends State<MyHomePage> {
                   new Padding(
                     padding: new EdgeInsets.all(7.0),
                     child:
-                    //new Text('Accelerometer: $gyroscope',
                     new Text(
                         "Latitude: "+Latitude,
                         style: new TextStyle(fontSize: 15.0)),
@@ -62,7 +61,6 @@ class _MyHomePageState extends State<MyHomePage> {
                   new Padding(
                     padding: new EdgeInsets.all(7.0),
                     child:
-                    //new Text('Accelerometer: $gyroscope',
                     new Text(
                         "Longitude: "+Longitude,
                         style: new TextStyle(fontSize: 15.0)),
@@ -92,15 +90,6 @@ class _MyHomePageState extends State<MyHomePage> {
               });
           print(position == null ? 'Unknown' : position.latitude.toString() + ', ' + position.longitude.toString());
         });
-
-
-    /*
-    _streamSubscriptions.add(gyroscopeEvents.listen((GyroscopeEvent event) {
-      setState(() {
-        _gyroscopeValues = <int>[(event.x*10).toInt(), (event.x*10).toInt(), (event.x*10).toInt()];
-      });
-    }));
-  */
   }
 }
 

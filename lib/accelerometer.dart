@@ -1,4 +1,3 @@
-import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:sensors/sensors.dart';
 import 'dart:math';
@@ -25,17 +24,10 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage> {
 
-
-
-
   double x=0.0,y=0.0,z=0.0;
 
   @override
   Widget build(BuildContext context) {
-
-
-
-
 
     return new Card(
       child: new Column(
@@ -58,7 +50,6 @@ class _MyHomePageState extends State<MyHomePage> {
                           new Padding(
                             padding: new EdgeInsets.all(7.0),
                             child:
-                            //new Text('Accelerometer: $gyroscope',
                             new Text(
                                 'x=' + (x).toInt().toStringAsFixed(1),
                                 style: new TextStyle(fontSize: 18.0)),
@@ -77,7 +68,6 @@ class _MyHomePageState extends State<MyHomePage> {
                           new Padding(
                             padding: new EdgeInsets.all(7.0),
                             child:
-                            //new Text('Accelerometer: $gyroscope',
                             new Text(
                                 " y=" + (y).toInt().toStringAsFixed(1),
                                 style: new TextStyle(fontSize: 18.0)),
@@ -97,7 +87,6 @@ class _MyHomePageState extends State<MyHomePage> {
                           new Padding(
                             padding: new EdgeInsets.all(7.0),
                             child:
-                            //new Text('Accelerometer: $gyroscope',
                             new Text(
                                 "z= "+(z).toInt().toStringAsFixed(1),
                                 style: new TextStyle(fontSize: 18.0)),
@@ -113,11 +102,9 @@ class _MyHomePageState extends State<MyHomePage> {
                               decoration: new BoxDecoration(color: Colors.green),
                             ),
                           ),
-
                         ],
                       )
                   )
-
                 ],
               )
           )

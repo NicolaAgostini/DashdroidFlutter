@@ -55,17 +55,10 @@ class _CameraExampleHomeState extends State<CameraExampleHome> {
     SystemChrome.setPreferredOrientations([
       DeviceOrientation.portraitUp,
       DeviceOrientation.portraitDown,
-      //DeviceOrientation.landscapeLeft,
-      //DeviceOrientation.landscapeRight,
     ]);
 
     return Scaffold(
       key: _scaffoldKey,
-      /*appBar: AppBar(
-        title: const Text('Camera example'),
-        backgroundColor: Colors.green[600],
-      ),
-      */
       body: Column(
         children: <Widget>[
           new Row(
@@ -107,7 +100,7 @@ class _CameraExampleHomeState extends State<CameraExampleHome> {
     );
   }
 
-  /// Display the preview from the camera (or a message if the preview is not available).
+  // Display the preview from the camera (or a message if the preview is not available).
   Widget _cameraPreviewWidget() {
     if (controller == null || !controller.value.isInitialized) {
       return const Text(
@@ -126,10 +119,7 @@ class _CameraExampleHomeState extends State<CameraExampleHome> {
     }
   }
 
-  /// Display the thumbnail of the captured image or video.
-
-
-  /// Display the control bar with buttons to take pictures and record videos.
+  // Display the control bar with buttons to take pictures and record videos.
   Widget _captureControlRowWidget() {
     return Row(
       mainAxisAlignment: MainAxisAlignment.center,
@@ -137,24 +127,21 @@ class _CameraExampleHomeState extends State<CameraExampleHome> {
 
       children: <Widget>[
     FloatingActionButton(
-
-      onPressed: controller != null &&
-          controller.value.isInitialized
-          ? onTakePictureButtonPressed
-          : null,
-      tooltip: 'Press',
-      child: new Icon(Icons.add_a_photo),
-      backgroundColor: Colors.green[300],
-    ),
-
+        onPressed: controller != null &&
+            controller.value.isInitialized
+            ? onTakePictureButtonPressed
+            : null,
+        tooltip: 'Press',
+        child: new Icon(Icons.add_a_photo),
+        backgroundColor: Colors.green[300],
+        ),
       ],
     );
   }
 
-  /// Display a row of toggle to select the camera (or a message if no camera is available).
+  // Display a row of toggle to select the camera (or a message if no camera is available).
   Widget _cameraTogglesRowWidget() {
     final List<Widget> toggles = <Widget>[];
-
     if (cameras.isEmpty) {
       return const Text('No camera found');
     } else {

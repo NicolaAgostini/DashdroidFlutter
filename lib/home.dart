@@ -69,8 +69,6 @@ class _HomePageState extends State<HomePage> {
               color: Colors.green,
               child: UserAccountsDrawerHeader(
               accountName: Text('DashDroid'),
-
-              // currentAccountPicture: Image.network('https://en.gravatar.com/userimage/62269105/d4f03cb59fdf23540406b41381556614.jpeg'),
             ),
             ),
         new Container (
